@@ -1,2 +1,14 @@
-you will need the assets from this folder:
-https://drive.google.com/drive/folders/1_dVxHVTJO_YtMAo9ia7wnja1XY0nImr5?usp=drive_link
+# Persona Personal Website
+
+A Persona-inspired personal portfolio website.
+
+## Contributions and Credits
+
+This repository reflects collaborative support during development.
+
+Special thanks and code credit:
+- @blairxu13
+
+## Status
+
+Active portfolio project. I will continue updating content, projects, and experience as I grow.
