@@ -18,11 +18,14 @@ const REVEAL_CONTENT = [
   {
     upper: [
       "Name: Anson Chan",
-      "Role: As",
-      "Education: TODO School / Program",
+      "Education: University of British Columbia",
+      "Major: Computer Engineering, Faculty of Applied Science",
     ],
-    lower: "TODO: Add graduation year, major, and key coursework here",
-  },
+    lower: ["Expected Graduation: 2029",
+      "Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming (Java)",
+      "Operating Systems", "Software Engineering Fundamentals "
+    ]
+    },
   {
     upper: [
       "I enjoy turning complex ideas into clear user experiences.",
