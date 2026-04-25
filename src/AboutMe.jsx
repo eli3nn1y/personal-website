@@ -63,8 +63,8 @@ export default function AboutMe() {
   };
 
   const revealSection = (index) => {
-    if (active === index) setRevealed(true);
-    else setActive(index);
+    setActive(index);
+    setRevealed(true);
   };
 
   useEffect(() => {
@@ -523,9 +523,18 @@ export default function AboutMe() {
             className={`sc-bar-outer${active === i ? " active" : ""}${mounted ? " mounted" : ""}`}
             onMouseEnter={() => selectSection(i)}
             onPointerEnter={() => selectSection(i)}
+            onFocus={() => selectSection(i)}
             onClick={() => revealSection(i)}
             role="button"
             aria-label={item.label}
+            aria-pressed={revealed && active === i}
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                revealSection(i);
+              }
+            }}
           >
             <div className="sc-bar-red" />
             <div className="sc-bar">
