@@ -59,10 +59,12 @@ export default function AboutMe() {
   const navigate = useNavigate();
 
   const selectSection = (index) => {
+    if (revealed) return;
     setActive(index);
   };
 
   const revealSection = (index) => {
+    if (revealed) return;
     if (active === index) setRevealed(true);
     else setActive(index);
   };
