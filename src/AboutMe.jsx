@@ -120,7 +120,7 @@ export default function AboutMe() {
           position: absolute;
           inset: 0;
           z-index: 6;
-          pointer-events: none;
+          pointer-events: all;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
@@ -293,17 +293,10 @@ export default function AboutMe() {
         .sc-right-nav .sc-nav-arrow.left  { animation: sc-arrow-left  0.8s ease-in-out infinite; }
         .sc-right-nav .sc-nav-arrow.right { animation: sc-arrow-right 0.8s ease-in-out infinite; }
 
-        /* ─────────────────────────────────────────────
-           KEY FIX: sc-bar-outer is the ONLY element
-           that receives pointer events. Every child
-           inside is pointer-events: none so clicks
-           and hovers register on the full bar area.
-        ───────────────────────────────────────────── */
         .sc-bar-outer {
           position: relative;
           flex-shrink: 0;
-          pointer-events: all;   /* whole outer div is the hit target */
-          cursor: default;
+          cursor: pointer;
           transform: translateX(-100%);
           transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -333,10 +326,11 @@ export default function AboutMe() {
           width: 45vw; height: 64px;
           transition: height 0.3s cubic-bezier(0.22,1,0.36,1);
           background: #111;
+          cursor: pointer;
+          pointer-events: all;
           clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
           box-shadow: 0 6px 24px rgba(0,0,0,0.65);
           z-index: 1;
-          pointer-events: none;   /* ← children never intercept */
         }
         .sc-bar::after {
           content: '';
@@ -345,12 +339,6 @@ export default function AboutMe() {
           height: 6px;
           background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);
           z-index: 10;
-          pointer-events: none;
-        }
-
-        /* Every inner element: pointer-events none */
-        .sc-bar-fill, .sc-bar-shade, .sc-bar-content,
-        .sc-char, .sc-role, .sc-main, .sc-main-top, .sc-label {
           pointer-events: none;
         }
 
@@ -523,9 +511,13 @@ export default function AboutMe() {
             key={item.id}
             className={`sc-bar-outer${active === i ? " active" : ""}${mounted ? " mounted" : ""}`}
             onMouseEnter={() => setActive(i)}
+            onPointerEnter={() => setActive(i)}
+            onMouseMove={() => {
+              if (active !== i) setActive(i);
+            }}
             onClick={() => {
-              if (active === i) setRevealed(true);
-              else setActive(i);
+              setActive(i);
+              setRevealed(true);
             }}
             role="button"
             aria-label={item.label}
