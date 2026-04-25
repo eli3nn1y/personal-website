@@ -10,6 +10,7 @@ import icon3 from "./assets/icon3.png";
 import mainm from "./assets/mainm.jpeg";
 import mainm2 from "./assets/mainm2.jpeg";
 import mainf from "./assets/mainf.jpeg";
+import { scrapeSVGMotionValuesFromProps } from "framer-motion";
 
 const CHARS = [char1, char2, char3];
 const MAIN_IMAGES = [mainm, mainm2, mainf];
@@ -18,29 +19,27 @@ const REVEAL_CONTENT = [
   {
     upper: [
       "Name: Anson Chan",
-      "Education: University of British Columbia",
-      "Major: Computer Engineering, Faculty of Applied Science",
+      "Born in Hong Kong, raised in Australia for 15 years. Moved to Canada in late 2021.",
+      "Favorite League of Legends champion: Ahri",
     ],
-    lower: ["Expected Graduation: 2029",
-      "Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming (Java)",
-      "Operating Systems", "Software Engineering Fundamentals "
-    ]
-    },
-  {
-    upper: [
-      "I enjoy turning complex ideas into clear user experiences.",
-      "I like combining visual design and engineering in one workflow.",
-      "I actively build projects to strengthen practical, job-ready skills.",
-    ],
-    lower: "Strengths: communication, ownership, and continuous improvement",
+    lower: "Hobbies: Tennis, Trumpet, League of Legends",
   },
   {
     upper: [
-      "Goal: contribute to real products with measurable impact.",
-      "Open to internships and early-career software opportunities.",
-      "Building this portfolio to showcase my growth and execution style.",
+      "University: University of British Columbia (UBC)",
+      "Major: Computer Engineering",
+      "Expected Graduation: 2029",
     ],
-    lower: "TODO: Replace this section with your own short personal statement",
+    lower: "Academic focus: software engineering with an AI/ML focus",
+  },
+  {
+    upper: [
+      "Currently working on:",
+      "Building an NLP engine that takes in user feedback, analyzes sentiment, and generates a user report.",
+      "Developing a program that uses OpenCV to recreate Jujutsu Kaisen cursed techniques from hand signals.",
+      "Pushing to Plat in League of Legends "
+    ],
+    lower: "also crashing out on learning system design",
   },
 ];
 
@@ -60,15 +59,15 @@ const ITEMS = [
     ],
   },
   {
-    id: "strengths", label: "STRENGTHS", handle: "UI + Engineering", href: "https://www.linkedin.com", icon: "📷", barIcon: icon2, bars: 3, newBars: [1], counts: ["UI", "WEB", "TEAM"],
+    id: "education", label: "EDUCATION", handle: "UBC Computer Engineering", href: "https://www.linkedin.com", icon: "📷", barIcon: icon2, bars: 3, newBars: [1], counts: ["UBC", "CPEN", "2029"],
     links: ["linkedin.com", "github.com/ansonnchan", "vercel.com"],
     stats: [
-      { tag: "FOCUS", value: "FE", color: "#e1306c" },
-      { tag: "MODE", value: "BUILD",  color: "#f77737" },
+      { tag: "FOCUS", value: "CPEN", color: "#e1306c" },
+      { tag: "YEAR", value: "2029",  color: "#f77737" },
     ],
   },
   {
-    id: "goals", label: "CAREER GOALS", handle: "Internship + Full-time", href: "https://github.com/ansonnchan/persona-personal-website", icon: "🎵", barIcon: icon3, bars: 3, newBars: [0, 2], counts: ["SWE", "PM", "UX"],
+    id: "goals", label: "CURRENTLY WORKING ON", handle: "Internship + Full-time", href: "https://github.com/ansonnchan/persona-personal-website", icon: "🎵", barIcon: icon3, bars: 3, newBars: [0, 2], counts: ["SWE", "PM", "UX"],
     links: ["github.com/ansonnchan/persona-personal-website", "linkedin.com", "vercel.com"],
     stats: [
       { tag: "TARGET", value: "2026", color: "#00f2ea" },
