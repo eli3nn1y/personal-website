@@ -231,7 +231,7 @@ export default function AboutMe() {
         }
         .sc-reveal-upper-line {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 33px;
+          font-size: clamp(18px, 1.65vw, 27px);
           letter-spacing: 1px;
           line-height: 1.15;
         }
@@ -246,7 +246,7 @@ export default function AboutMe() {
           justify-content: flex-start;
           color: #fff;
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 34px;
+          font-size: clamp(19px, 1.8vw, 28px);
           line-height: 1.18;
           letter-spacing: 1px;
           white-space: normal;
@@ -491,10 +491,10 @@ export default function AboutMe() {
             pointer-events: none;
           }
           .sc-reveal-upper-bar { top: 10%; height: 46%; width: 96%; left: 2%; }
-          .sc-reveal-upper-line { font-size: 22px; line-height: 1.1; padding: 0 10px; }
+          .sc-reveal-upper-line { font-size: clamp(15px, 4.2vw, 19px); line-height: 1.1; padding: 0 10px; }
           .sc-reveal-lower-bar {
             top: 62%; width: 88%; bottom: 8%; height: auto; max-height: none;
-            font-size: 24px; line-height: 1.2; padding: 8px 12px;
+            font-size: clamp(16px, 4.5vw, 20px); line-height: 1.2; padding: 8px 12px;
           }
           .sc-right-nav { top: 2vh; left: 4vw; transform: translateX(0) rotate(-12deg); }
           .sc-footer { display: none; }
@@ -522,11 +522,11 @@ export default function AboutMe() {
           <div
             key={item.id}
             className={`sc-bar-outer${active === i ? " active" : ""}${mounted ? " mounted" : ""}`}
-            onMouseEnter={() => {
-              setRevealed(false);
-              setActive(i);
+            onMouseEnter={() => setActive(i)}
+            onClick={() => {
+              if (active === i) setRevealed(true);
+              else setActive(i);
             }}
-            onClick={() => setRevealed(true)}
             role="button"
             aria-label={item.label}
           >
