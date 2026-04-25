@@ -4,10 +4,6 @@ import char1 from "./assets/char1.png";
 import char2 from "./assets/char2.png";
 import char3 from "./assets/char3.png";
 import bgVideo from "./assets/main1.mp4";
-import newsign from "./assets/newsign.png";
-import icon1 from "./assets/icon1.png";
-import icon2 from "./assets/icon2.png";
-import icon3 from "./assets/icon3.png";
 
 const CHARS = [char1, char2, char3];
 
@@ -19,24 +15,21 @@ const ROLES = [
 
 const ITEMS = [
   {
-    id: "github", label: "GITHUB", handle: "@ansonnchan", href: "https://github.com/ansonnchan", icon: "🎮", barIcon: icon1, bars: 3, newBars: [0], counts: ["REPOS", "CODE", "OSS"],
-    links: ["https://github.com/ansonnchan", "https://github.com/ansonnchan?tab=repositories", "https://github.com/ansonnchan/persona-personal-website"],
+    id: "github", label: "GITHUB", handle: "@ansonnchan", href: "https://github.com/ansonnchan", icon: "🎮",
     stats: [
       { tag: "TYPE", value: "DEV", color: "#9147ff" },
       { tag: "FOCUS", value: "BACKEND",  color: "#bf94ff" },
     ],
   },
   {
-    id: "linkedin", label: "LINKEDIN", handle: "@ansonnchan", href: "https://linkedin.com/in/ansonnchan", icon: "📷", barIcon: icon2, bars: 3, newBars: [1], counts: ["NETWORK", "CAREER", "UPDATES"],
-    links: ["https://linkedin.com/in/ansonnchan", "https://linkedin.com/jobs", "https://linkedin.com/in/ansonnchan"],
+    id: "linkedin", label: "LINKEDIN", handle: "@ansonnchan", href: "https://linkedin.com/in/ansonnchan", icon: "📷",
     stats: [
-      { tag: "TYPE", value: "LOCKED IN", color: "#e1306c" },
-      { tag: "FOCUS", value: "BEING LOCKED IN",  color: "#f77737" },
+      { tag: "TYPE", value: "FREE", color: "#e1306c" },
+      { tag: "FOCUS", value: "OPEN",  color: "#f77737" },
     ],
   },
   {
-    id: "email", label: "CONTACT", handle: "ananryry180@gmail.com", href: "mailto:ananryry180@gmail.com", icon: "🎵", barIcon: icon3, bars: 3, newBars: [0, 2], counts: ["EMAIL", "REACH", "CALL"],
-    links: ["mailto:ananryry180@gmail.com", "https://github.com/ansonnchan/persona-personal-website", "https://linkedin.com/in/ansonnchan"],
+    id: "email", label: "CONTACT", handle: "ananryry180@gmail.com", href: "mailto:ananryry180@gmail.com", icon: "🎵",
     stats: [
       { tag: "TYPE", value: "DIRECT", color: "#00f2ea" },
       { tag: "SLA", value: "24H",  color: "#ff0050" },
@@ -70,14 +63,9 @@ function openExternalLink(target) {
 }
 
 export default function Socials() {
-  const [active, setActive]               = useState(0);
-  const [mounted, setMounted]             = useState(false);
-  const [activeInfoBar, setActiveInfoBar] = useState(0);
-  const [focus, setFocus]                 = useState("left"); // "left" | "right"
+  const [active, setActive]   = useState(0);
+  const [mounted, setMounted] = useState(false);
   const navigate = useNavigate();
-
-  const isMobileViewport =
-    typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches;
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 60);
@@ -86,23 +74,14 @@ export default function Socials() {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (focus === "left") {
-        if (e.key === "ArrowUp")    setActive(i => Math.max(0, i - 1));
-        if (e.key === "ArrowDown")  setActive(i => Math.min(ITEMS.length - 1, i + 1));
-        if (e.key === "ArrowRight") { setFocus("right"); setActiveInfoBar(0); }
-        if (e.key === "Enter")      openExternalLink(ITEMS[active].href);
-      } else {
-        const barCount = ITEMS[active].bars;
-        if (e.key === "ArrowUp")   setActiveInfoBar(i => Math.max(0, i - 1));
-        if (e.key === "ArrowDown") setActiveInfoBar(i => Math.min(barCount - 1, i + 1));
-        if (e.key === "ArrowLeft") setFocus("left");
-        if (e.key === "Enter")     openExternalLink(ITEMS[active].links[activeInfoBar]);
-      }
-      if ((e.key === "ArrowLeft" && focus === "left") || e.key === "Escape" || e.key === "Backspace") navigate(-1);
+      if (e.key === "ArrowUp")    setActive(i => Math.max(0, i - 1));
+      if (e.key === "ArrowDown")  setActive(i => Math.min(ITEMS.length - 1, i + 1));
+      if (e.key === "Enter")      openExternalLink(ITEMS[active].href);
+      if ((e.key === "Escape" || e.key === "Backspace")) navigate(-1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active, navigate, focus]);
+  }, [active, navigate]);
 
   return (
     <div id="menu-screen">
@@ -373,170 +352,6 @@ export default function Socials() {
           clip-path: polygon(20px 0%, 100% 0%, calc(100% - 20px) 100%, 0% 100%);
         }
 
-        /* right-side nav bar */
-        @keyframes sc-right-nav-pop {
-          0%   { opacity: 0; transform: scale(0.55) translateY(-10px); }
-          65%  { opacity: 1; transform: scale(1.1) translateY(2px); }
-          100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .sc-right-nav {
-          position: fixed;
-          top: 40px;
-          right: 40px;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          pointer-events: none;
-          z-index: 50;
-          animation: sc-right-nav-pop 0.38s cubic-bezier(0.22,1,0.36,1) both;
-        }
-        .sc-right-nav .sc-nav-btn {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 100px;
-          letter-spacing: 3px;
-          line-height: 1;
-          user-select: none;
-          color: #fff;
-          -webkit-text-stroke: 2px #000;
-          paint-order: stroke fill;
-          background: none;
-          border: none;
-          padding: 0 6px;
-        }
-        .sc-right-nav .sc-nav-label {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 28px;
-          letter-spacing: 3px;
-          line-height: 1;
-          user-select: none;
-          color: #111;
-          padding: 0 8px;
-        }
-        .sc-right-nav .sc-nav-arrow {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
-          color: #c4001a;
-          display: inline-block;
-          user-select: none;
-        }
-        .sc-right-nav .sc-nav-arrow.left  { animation: sc-arrow-left  0.8s ease-in-out infinite; }
-        .sc-right-nav .sc-nav-arrow.right { animation: sc-arrow-right 0.8s ease-in-out infinite; }
-
-        /* info panel */
-        .sc-info-panel {
-          position: fixed;
-          top: 132px;
-          right: 0;
-          left: 65%;
-          bottom: 84px;
-          z-index: 50;
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-          padding: 8px 8px 8px 0;
-          overflow-y: auto;
-          overflow-x: hidden;
-          pointer-events: none;
-        }
-
-        @keyframes sc-infobar-in {
-          0%   { opacity: 0; transform: translateX(40px); }
-          60%  { opacity: 1; transform: translateX(-4px); }
-          100% { opacity: 1; transform: translateX(0); }
-        }
-        .sc-info-bar-wrap {
-          position: relative;
-          right: auto;
-          left: auto;
-          width: 100%;
-          height: 46px;
-          background: transparent;
-          pointer-events: all;
-          cursor: pointer;
-          z-index: 1;
-          padding: 0;
-          animation: sc-infobar-in 0.35s cubic-bezier(0.22,1,0.36,1) both;
-        }
-        .sc-info-bar-wrap.selected {
-          background: #111;
-          padding: 1.5px;
-          border-radius: 8px;
-        }
-        .sc-info-bar {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          background: transparent;
-          display: flex;
-          align-items: center;
-          overflow: hidden;
-        }
-        .sc-info-bar-wrap.selected .sc-info-bar {
-          background: #fff;
-          border-radius: 7px;
-        }
-        .sc-info-bar-new {
-          position: absolute;
-          left: -40px;
-          bottom: 0;
-          height: 65%;
-          width: auto;
-          pointer-events: none;
-          z-index: 3;
-        }
-        .sc-info-bar-wrap.selected .sc-info-bar::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 4px;
-          background: #c4001a;
-          z-index: 1;
-        }
-        .sc-info-bar-text {
-          flex: 1;
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
-          letter-spacing: 2px;
-          color: #111;
-          padding: 0 14px;
-          user-select: none;
-        }
-        .sc-info-bar-box {
-          height: 70%;
-          background: #000;
-          display: flex;
-          align-items: center;
-          padding: 0 12px;
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 20px;
-          letter-spacing: 1px;
-          color: #fff;
-          flex-shrink: 0;
-          border-radius: 6px;
-          margin-right: 4px;
-          user-select: none;
-        }
-
-        .sc-info-bar-icon {
-          height: 55%;
-          width: auto;
-          flex-shrink: 0;
-          margin-left: 14px;
-          object-fit: contain;
-          pointer-events: none;
-          user-select: none;
-        }
-
-        .sc-info-bar-count {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
-          letter-spacing: 1px;
-          color: #111;
-          margin-right: 80px;
-          flex-shrink: 0;
-          user-select: none;
-        }
-
         /* footer hints */
         .sc-footer {
           position: fixed;
@@ -581,29 +396,6 @@ export default function Socials() {
             justify-content: flex-start;
             padding-top: 12px;
             gap: 3px;
-          }
-
-          .sc-info-panel {
-            top: min(47vh, 320px);
-            left: 8px;
-            right: 8px;
-            bottom: 58px;
-            gap: 4px;
-            padding: 4px 0;
-          }
-
-          .sc-info-bar-wrap {
-            height: 38px !important;
-          }
-
-          .sc-info-bar-text {
-            font-size: 15px;
-            letter-spacing: 1px;
-          }
-
-          .sc-info-bar-count {
-            margin-right: 10px;
-            font-size: 14px;
           }
 
           .sc-footer {
@@ -668,46 +460,6 @@ export default function Socials() {
           </div>
         ))}
       </div>
-
-      {mounted && (
-        <div className="sc-right-nav" key={active}>
-          <span className="sc-nav-arrow left">◄</span>
-          <span className="sc-nav-btn">LB</span>
-          <span className="sc-nav-label">{ITEMS[active].label}</span>
-          <span className="sc-nav-btn">RB</span>
-          <span className="sc-nav-arrow right">►</span>
-        </div>
-      )}
-
-      {mounted && (
-        <div className="sc-info-panel" key={`panel-${active}`}>
-          {Array.from({ length: ITEMS[active].bars }).map((_, i) => (
-            <div
-              className={`sc-info-bar-wrap${activeInfoBar === i ? " selected" : ""}`}
-              key={`bar-${active}-${i}`}
-              style={{ animationDelay: `${i * 50}ms` }}
-              onClick={() => {
-                if (isMobileViewport || activeInfoBar === i) {
-                  openExternalLink(ITEMS[active].links[i]);
-                  return;
-                }
-                setActiveInfoBar(i);
-              }}
-              onMouseEnter={() => setActiveInfoBar(i)}
-            >
-              {ITEMS[active].newBars.includes(i) && (
-                <img className="sc-info-bar-new" src={newsign} alt="" />
-              )}
-              <div className="sc-info-bar">
-                <img className="sc-info-bar-icon" src={ITEMS[active].barIcon} alt="" />
-                <span className="sc-info-bar-text">{ITEMS[active].links[i].slice(0, 10)}...</span>
-                <span className="sc-info-bar-box">VIEWS</span>
-                <span className="sc-info-bar-count">{ITEMS[active].counts[i]}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
 
       <div className={`sc-footer${mounted ? " mounted" : ""}`}>
         <div className="sc-footer-row"><span className="sc-footer-key">↑↓</span><span>SELECT</span></div>
