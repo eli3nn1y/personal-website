@@ -307,6 +307,7 @@ export default function AboutMe() {
           position: relative;
           flex-shrink: 0;
           cursor: pointer;
+          pointer-events: all;
           transform: translateX(-100%);
           transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -527,12 +528,7 @@ export default function AboutMe() {
             aria-label={item.label}
           >
             <div className="sc-bar-red" />
-            <div
-              className="sc-bar"
-              onMouseEnter={() => selectSection(i)}
-              onPointerEnter={() => selectSection(i)}
-              onClick={() => revealSection(i)}
-            >
+            <div className="sc-bar">
               <img className="sc-char" src={CHARS[i]} alt="" />
               <div className="sc-bar-fill" />
               <div className="sc-bar-shade" />
