@@ -58,7 +58,7 @@ const SECTION_DETAILS = [
   },
 ];
 
-export default function ResumePage({ src }) {
+export default function Experience({ src }) {
   const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);

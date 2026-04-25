@@ -3,9 +3,9 @@ import { AnimatePresence } from 'framer-motion'
 import menuVideo from './assets/main1.mp4'
 import main2 from './assets/circletransition.mp4'
 import P3Menu from './P3Menu'
-import ExperiencePage from './ResumePage'
+import Experience from './Experience'
 import PersonalProjects from './PersonalProjects'
-import TechnicalSkills from './TechnicalSkills'
+import Skills from './Skills'
 import PageTransition from './PageTransition'
 import Socials from './Socials'
 import AboutMe from './AboutMe'
@@ -33,13 +33,13 @@ function AnimatedRoutes() {
           <PageTransition variant="about"><AboutMe /></PageTransition>
         } />
         <Route path="/experience" element={
-          <PageTransition><ExperiencePage src={main2} /></PageTransition>
+          <PageTransition><Experience src={main2} /></PageTransition>
         } />
         <Route path="/projects" element={
           <PageTransition><PersonalProjects /></PageTransition>
         } />
         <Route path="/skills" element={
-          <PageTransition><TechnicalSkills /></PageTransition>
+          <PageTransition><Skills /></PageTransition>
         } />
         <Route path="/socials" element={
           <PageTransition variant="socials"><Socials /></PageTransition>
