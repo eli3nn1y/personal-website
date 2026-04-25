@@ -182,7 +182,46 @@ export default function TechnicalSkills() {
           color: rgba(255, 255, 255, 0.25);
         }
 
+        .skills-footer {
+          position: fixed;
+          bottom: 20px;
+          right: 28px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 5px;
+          font-family: 'Bebas Neue', sans-serif;
+          padding: 8px 10px;
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.28);
+          background: rgba(0, 0, 0, 0.58);
+          box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+          backdrop-filter: blur(2px);
+          z-index: 12;
+        }
+        .skills-footer-row {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 17px;
+          letter-spacing: 2.2px;
+          color: rgba(255, 255, 255, 0.9);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+        .skills-footer-key {
+          border: 1px solid rgba(255, 255, 255, 0.55);
+          border-radius: 5px;
+          background: rgba(0, 0, 0, 0.72);
+          color: #fff;
+          padding: 2px 8px;
+          font-size: 14px;
+        }
+
         @media (max-width: 700px) {
+          .skills-footer {
+            display: none;
+          }
+
           .skills-overlay {
             padding: 5.5vh 4vw;
           }
@@ -196,6 +235,10 @@ export default function TechnicalSkills() {
           }
         }
       `}</style>
+
+      <div className="skills-footer">
+        <div className="skills-footer-row"><span className="skills-footer-key">ESC</span><span>BACK</span></div>
+      </div>
     </div>
   );
 }

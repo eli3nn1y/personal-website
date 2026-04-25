@@ -427,7 +427,51 @@ export default function ResumePage({ src }) {
           min-width: 84px;
         }
 
+        .resume-footer {
+          position: fixed;
+          bottom: 20px;
+          right: 28px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 5px;
+          font-family: 'Bebas Neue', sans-serif;
+          padding: 8px 10px;
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.28);
+          background: rgba(0, 0, 0, 0.58);
+          box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+          backdrop-filter: blur(2px);
+          z-index: 20;
+          opacity: 0;
+          transition: opacity 0.4s ease 0.6s;
+        }
+        .resume-footer.mounted {
+          opacity: 1;
+        }
+        .resume-footer-row {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 17px;
+          letter-spacing: 2.2px;
+          color: rgba(255, 255, 255, 0.9);
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+        .resume-footer-key {
+          border: 1px solid rgba(255, 255, 255, 0.55);
+          border-radius: 5px;
+          background: rgba(0, 0, 0, 0.72);
+          color: #fff;
+          padding: 2px 8px;
+          font-size: 14px;
+        }
+
         @media (max-width: 768px) {
+          .resume-footer {
+            display: none;
+          }
+
           .resume-mobile-controls {
             position: fixed;
             left: 8px;
@@ -507,6 +551,11 @@ export default function ResumePage({ src }) {
           </div>
         )}
 
+      </div>
+
+      <div className={`resume-footer${mounted ? " mounted" : ""}`}>
+        <div className="resume-footer-row"><span className="resume-footer-key">↑↓</span><span>SELECT</span></div>
+        <div className="resume-footer-row"><span className="resume-footer-key">ESC</span><span>BACK</span></div>
       </div>
 
       <div className="resume-mobile-controls" aria-label="Resume mobile controls">
