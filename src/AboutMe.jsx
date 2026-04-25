@@ -58,6 +58,15 @@ export default function AboutMe() {
   const [revealed, setRevealed] = useState(false);
   const navigate = useNavigate();
 
+  const selectSection = (index) => {
+    setActive(index);
+  };
+
+  const revealSection = (index) => {
+    if (active === index) setRevealed(true);
+    else setActive(index);
+  };
+
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 60);
     return () => clearTimeout(t);
@@ -297,6 +306,7 @@ export default function AboutMe() {
         .sc-bar-outer {
           position: relative;
           flex-shrink: 0;
+          cursor: pointer;
           transform: translateX(-100%);
           transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -510,16 +520,19 @@ export default function AboutMe() {
           <div
             key={item.id}
             className={`sc-bar-outer${active === i ? " active" : ""}${mounted ? " mounted" : ""}`}
-            onMouseEnter={() => setActive(i)}
-            onClick={() => {
-              if (active === i) setRevealed(true);
-              else setActive(i);
-            }}
+            onMouseEnter={() => selectSection(i)}
+            onPointerEnter={() => selectSection(i)}
+            onClick={() => revealSection(i)}
             role="button"
             aria-label={item.label}
           >
             <div className="sc-bar-red" />
-            <div className="sc-bar">
+            <div
+              className="sc-bar"
+              onMouseEnter={() => selectSection(i)}
+              onPointerEnter={() => selectSection(i)}
+              onClick={() => revealSection(i)}
+            >
               <img className="sc-char" src={CHARS[i]} alt="" />
               <div className="sc-bar-fill" />
               <div className="sc-bar-shade" />
