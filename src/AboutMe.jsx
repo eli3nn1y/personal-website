@@ -34,7 +34,7 @@ const REVEAL_CONTENT = [
       "Currently working on:",
       "NLP engine that analyzes user feedback and generates sentiment reports.",
       "OpenCV project recreating Jujutsu Kaisen cursed techniques from hand signals.",
-      "Learning system design",
+      "Learning system design.",
     ],
     lower: "Also pushing plat in league",
   },
@@ -123,7 +123,7 @@ export default function AboutMe() {
         </div>
       )}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,700;1,700&family=Montserrat:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,700;1,700&display=swap');
 
         .sc-root {
           position: absolute;
@@ -267,10 +267,9 @@ export default function AboutMe() {
           text-align: center;
         }
         .sc-reveal-upper-line {
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 300;
-          font-size: 20px;
-          letter-spacing: 0.5px;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 33px;
+          letter-spacing: 1px;
           line-height: 1.15;
         }
         .sc-reveal-lower-bar {
@@ -287,12 +286,10 @@ export default function AboutMe() {
           align-items: flex-start;
           justify-content: flex-start;
           color: #fff;
-          font-family: 'Montserrat', sans-serif;
-          font-weight: 300;
-          font-size: 22px;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 34px;
           line-height: 1.18;
-          letter-spacing: 0.4px;
-          text-transform: lowercase;
+          letter-spacing: 1px;
           white-space: normal;
           overflow-y: auto;
           padding: 10px 18px 10px 22px;
@@ -624,7 +621,7 @@ export default function AboutMe() {
           }
 
           .sc-reveal-upper-line {
-            font-size: 14px;
+            font-size: 22px;
             line-height: 1.1;
             padding: 0 10px;
           }
@@ -635,7 +632,7 @@ export default function AboutMe() {
             bottom: 8%;
             height: auto;
             max-height: none;
-            font-size: 15px;
+            font-size: 24px;
             line-height: 1.2;
             padding: 8px 12px 8px 12px;
           }
@@ -691,8 +688,12 @@ export default function AboutMe() {
             key={item.id}
             className={`sc-bar-outer${active === i ? " active" : ""}${mounted ? " mounted" : ""}`}
             onMouseEnter={() => {
-              setRevealed(false);
+              if (revealed) return;
               setActive(i);
+            }}
+            onMouseMove={() => {
+              if (revealed) return;
+              if (active !== i) setActive(i);
             }}
             role="button"
             aria-label={item.label}
