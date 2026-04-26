@@ -15,21 +15,21 @@ const ROLES = [
 
 const ITEMS = [
   {
-    id: "github", label: "GITHUB", handle: "@ansonnchan", href: "https://github.com/ansonnchan", icon: "🎮",
+    id: "github", label: "GITHUB", handle: "@eli3nn1y", href: "https://github.com/eli3nn1y", icon: "🎮",
     stats: [
-      { tag: "TYPE", value: "DEV", color: "#9147ff" },
-      { tag: "FOCUS", value: "BACKEND",  color: "#bf94ff" },
+      { tag: "TYPE", value: "BEGINNER", color: "#9147ff" },
+      { tag: "FOCUS", value: "WORKING",  color: "#bf94ff" },
     ],
   },
   {
-    id: "linkedin", label: "LINKEDIN", handle: "@ansonnchan", href: "https://linkedin.com/in/ansonnchan", icon: "📷",
+    id: "linkedin", label: "LINKEDIN", handle: "@eliannyroman", href: "https://www.linkedin.com/in/elianny-roman-b88a07378/", icon: "📷",
     stats: [
       { tag: "TYPE", value: "FREE", color: "#e1306c" },
       { tag: "FOCUS", value: "OPEN",  color: "#f77737" },
     ],
   },
   {
-    id: "email", label: "CONTACT", handle: "ananryry180@gmail.com", href: "mailto:ananryry180@gmail.com", icon: "🎵",
+    id: "email", label: "CONTACT", handle: "eli3nnyyr12@gmail.com", href: "mailto:eli3nnyyr12@gmail.com", icon: "🎵",
     stats: [
       { tag: "TYPE", value: "DIRECT", color: "#00f2ea" },
       { tag: "SLA", value: "24H",  color: "#ff0050" },
