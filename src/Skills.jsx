@@ -10,12 +10,12 @@ const SKILL_CARDS = [
   {
     id: "languages",
     title: "Languages",
-    //subtitle: "Core coding fluency",
+    //subtitle: "coding languages level",
     image: char5,
     skills: [
-      { name: "Python", rating: 5 },
+      { name: "Python", rating: 1 },
       { name: "Java", rating: 4 },
-      { name: "TypeScript / JavaScript", rating: 4 },
+      { name: "JavaScript", rating: 4 },
       { name: "C++", rating: 3 },
       { name: "C", rating: 3 },
       { name: "SQL", rating: 4 },
