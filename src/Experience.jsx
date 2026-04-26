@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import defaultBackground from "./assets/main3-web.mp4";
+
 
 const ITEMS = [
   { id: "i", badge: "I", title: "EDUCATION", subtitle: "Degree / Coursework", rank: 3 },
@@ -67,6 +69,7 @@ export default function Experience({ src }) {
   const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const resolvedBackground = src || defaultBackground;
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);
@@ -87,10 +90,8 @@ export default function Experience({ src }) {
 
   return (
     <div id="menu-screen">
-      <video src={src} autoPlay loop muted playsInline />
-      <div className="resume-entry-mask" aria-hidden="true">
-        <video className="resume-entry-video" src={src} autoPlay loop muted playsInline />
-      </div>
+      <video src={resolvedBackground} autoPlay loop muted playsInline />
+      <div className="resume-entry-mask" aria-hidden="true" />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
 
@@ -103,14 +104,6 @@ export default function Experience({ src }) {
           clip-path: circle(0 at 50% 50%);
           animation: resume-entry-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
           pointer-events: none;
-        }
-
-        .resume-entry-video {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
         }
 
         @keyframes resume-entry-reveal {
