@@ -39,6 +39,49 @@ body {
   min-height: 100dvh;
 }
 
+.bgm-hud {
+  position: fixed;
+  left: 18px;
+  bottom: 16px;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(0, 0, 0, 0.58);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.bgm-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  letter-spacing: 1.8px;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1;
+}
+
+.bgm-key {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  padding: 2px 7px;
+  font-size: 12px;
+}
+
+.bgm-title {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgba(214, 245, 255, 0.86);
+}
+
 /* Touch-friendly defaults for narrow screens */
 @media (max-width: 1024px) {
   #menu-screen,
@@ -164,6 +207,11 @@ body {
   .p3-hint-row {
     font-size: 10px !important;
     letter-spacing: 1px !important;
+  }
+
+  .bgm-hud {
+    left: 10px;
+    bottom: max(10px, env(safe-area-inset-bottom));
   }
 
   .resume-overlay {

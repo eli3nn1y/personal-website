@@ -1,7 +1,9 @@
+import { useEffect, useRef, useState } from 'react'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import sharedBackground from './assets/Mainn-web.mp4'
-import experienceBackground from './assets/main3-web.mp4'
+import experienceBackground from './assets/train-web.mp4'
+import bgmTrack from './assets/Persona 3 Reload - Color Your Night - Pealeaf (128k).mp3'
 import P3Menu from './P3Menu'
 import Experience from './Experience'
 import PersonalProjects from './PersonalProjects'
@@ -50,5 +52,67 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  return <AnimatedRoutes />
+  const audioRef = useRef(null)
+  const hasStartedRef = useRef(false)
+  const [isMuted, setIsMuted] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    audio.loop = true
+    audio.volume = 0.2
+    audio.muted = isMuted
+  }, [isMuted])
+
+  useEffect(() => {
+    const tryStartAudio = async () => {
+      if (hasStartedRef.current) return
+      const audio = audioRef.current
+      if (!audio) return
+
+      hasStartedRef.current = true
+      try {
+        await audio.play()
+        setIsPlaying(true)
+      } catch {
+        hasStartedRef.current = false
+        setIsPlaying(false)
+      }
+    }
+
+    const onKeyDown = async (e) => {
+      if (e.key === 'm' || e.key === 'M') {
+        setIsMuted((prev) => !prev)
+      }
+
+      // Any first key press can satisfy browser autoplay interaction requirement.
+      await tryStartAudio()
+    }
+
+    const onPointerDown = async () => {
+      await tryStartAudio()
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    window.addEventListener('pointerdown', onPointerDown)
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown)
+      window.removeEventListener('pointerdown', onPointerDown)
+    }
+  }, [])
+
+  return (
+    <>
+      <audio ref={audioRef} src={bgmTrack} preload="auto" />
+      <AnimatedRoutes />
+
+      <div className="bgm-hud" aria-live="polite">
+        <div className="bgm-row"><span className="bgm-key">M</span><span>{isMuted ? 'BGM: MUTED' : isPlaying ? 'BGM: ACTIVE' : 'BGM: TAP TO START'}</span></div>
+        <div className="bgm-title">Color Your Night (Pealeaf)</div>
+      </div>
+    </>
+  )
 }
