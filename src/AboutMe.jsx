@@ -14,20 +14,20 @@ const MAIN_IMAGES = [mainm, mainm2, mainf];
 const REVEAL_CONTENT = [
   {
     upper: [
-      "Hi! I'm Anson, a second-year computer engineering student at UBC.",
-      " I was born in Hong Kong, but was raised in Australia for 15 years.",
-      "I'm passionate about software development and machine learning.", 
-      "I also enjoy playing tennis, trumpet, and League of Legends in my free time.", 
+      "Hi! I'm Elianny, a high school student in their junior year at Newark Collegiate Academy!",
+      " I was born in the Dominican Republic, but was raised in the United States after travelling over when i was 3.",
+      "I'm passionate about Architecture and programming technology.", 
+      "Other than that i like to play volleyball, wrestle, run track, and play video games in my freetime", 
     ],
-    lower: "current mains: ahri and shen",
+    lower: "current off season training: volleyball and wresting",
   },
   {
     upper: [
-      "Education: University of British Columbia (UBC)",
-      "Major: Computer Engineering",
-      "Dean's List: 2024W, 2025W"
+      "Education: Newark Collegiate Academy (NCA)",
+      "Classes: AP LANG, APUSH, AP CSA, AP Pre-calculus, Honors biology",
+      "Current GPA: 5.1"
     ],
-    lower: "expected graduation: 2029",
+    lower: "expected graduation: 2027",
   },
   {
     upper: [
